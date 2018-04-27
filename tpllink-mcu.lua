@@ -8,6 +8,7 @@ end
 local function decrypt(msg)
 end
 
+-- should this support callbacks?
 local function send(ip, msg)
 end
 
