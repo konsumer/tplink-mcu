@@ -1,0 +1,24 @@
+{
+  "name": "tplink-mcu",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Control tplink smart light devices with nodemcu",
+  "scripts": {
+    "example:alloff": "nodemcu-tool upload examples/alloff.lua",
+    "example:allon": "nodemcu-tool upload examples/allon.lua"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konsumer/tplink-mcu.git"
+  },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com> (http://konsumer.js.org/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konsumer/tplink-mcu/issues"
+  },
+  "homepage": "https://github.com/konsumer/tplink-mcu#readme",
+  "dependencies": {
+    "nodemcu-tool": "^2.1.1"
+  }
+}
