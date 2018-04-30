@@ -23,7 +23,7 @@ PASSWORD = 'YOUR_PASSWORD'
 
 * Run `npm i` in this directory.
 * Edit your `examples/settings.lua`
-* Run `npm run seup` to setup your NodeMCU for the examples (basic files for setting up wifi and running example)
+* Run `npm run setup` to setup your NodeMCU for the examples (basic files for setting up wifi and running example)
 * `npm run example:alloff` - an example to turn all lights off
 * `npm run example:allon` - an example to turn all lights on
 * `npm run terminal` - to see terminal output
