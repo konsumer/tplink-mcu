@@ -1,12 +1,40 @@
--- my wifi settings
-require "wifi-connect"
+-- load credentials, 'SSID' and 'PASSWORD' declared and initialize in there
+dofile('settings.lua')
 
--- require this from wherever you put it
-tplink = require "../tplink-mcu"
+LED_PIN = 0
+gpio.mode(LED_PIN, gpio.OUTPUT)
+gpio.write(LED_PIN, gpio.HIGH)
 
--- find all lights that are on local network, and turn them off
-local t = tplink.scan(1000000) -- scan for 1,000,000 us = 1 second
-for name,ip in pairs(t) do
-  print(name, ip)
-  tplink.power(ip, false)
+function encrypt(buffer)
+  local out = ''
+  local key = 0xAB
+  for i in buffer:gmatch('.') do
+      local c = string.byte(i)
+      local o = string.char(bit.bxor(c, key))
+      key = string.byte(o)
+      out = out .. o
+  end
+  return out
 end
+
+function startup()
+  gpio.write(LED_PIN, gpio.LOW)
+  
+  -- handle responses
+  srv = net.createUDPSocket()
+  srv:on('receive', function(srv, pl, port, ip)
+    print('received :'..pl)
+  end)
+  srv:listen(9998)
+
+  print(decrypt(encrypt('{"system":{"get_sysinfo":{}}}')))
+
+  -- basic broadcast
+  client = net.createUDPSocket()
+  client:send(9999, wifi.sta.getbroadcast(), encrypt('{"system":{"get_sysinfo":{}}}'))
+  client:close()
+end
+
+-- load auto-reloading wifi system, calls startup()
+dofile('wifi.lua')
+

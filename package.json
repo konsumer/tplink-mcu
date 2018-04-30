@@ -4,8 +4,10 @@
   "private": true,
   "description": "Control tplink smart light devices with nodemcu",
   "scripts": {
-    "example:alloff": "nodemcu-tool upload examples/alloff.lua",
-    "example:allon": "nodemcu-tool upload examples/allon.lua"
+    "setup": "nodemcu-tool upload examples/wifi.lua examples/settings.lua",
+    "example:alloff": "nodemcu-tool upload examples/alloff.lua --remotename init.lua",
+    "example:allon": "nodemcu-tool upload examples/allon.lua --remotename init.lua",
+    "terminal": "nodemcu-tool reset && nodemcu-tool terminal"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/konsumer/tplink-mcu#readme",
   "dependencies": {
-    "nodemcu-tool": "^2.1.1"
+    "nodemcu-tool": "^2.1.1",
+    "npm": "^6.0.0"
   }
 }
