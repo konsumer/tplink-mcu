@@ -2,11 +2,6 @@
 
 Control tplink smart light devices with nodemcu
 
-# NOT COMPLETE
-
-I'm still working on it.
-
-
 # This is not ready yet
 
 I wanted a light way to connect to wifi and control lights with an embedded device. This will let you mess with your devices with a $3 nodemcu.
