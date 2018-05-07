@@ -1,4 +1,1 @@
 .DS_Store
-node_modules
-*.log
-examples/settings.lua
